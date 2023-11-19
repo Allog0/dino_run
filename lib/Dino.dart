@@ -25,4 +25,5 @@ class Dino extends StatelessWidget{
         fit: BoxFit.fill),
       ),
     );
-  }}
+  }
+}

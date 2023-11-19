@@ -4,6 +4,9 @@ import 'dart:core';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'Barrier.dart';
+import 'Dino.dart';
+
 
 class MainGame extends StatefulWidget{
   const MainGame({Key? key}): super(key:key);
@@ -66,7 +69,15 @@ class _MainGameState extends State<MainGame>{
     });
   }
 
-  void updateScore(){}
+  void updateScore(){
+    bool xCheck = barrierX < dinoX + dinoWidth && barrierX + barrierWidth > dinoX;
+    bool yCheck = barrierY < dinoY + dinoHeight && barrierY + barrierHeight > dinoY ;
+
+    if(!dinoJumpedBarrier && xCheck && yCheck){
+      dinoJumpedBarrier = true;
+      score += 1;
+    }
+  }
 
   void loopBarriers(){
     setState(() {
@@ -78,7 +89,12 @@ class _MainGameState extends State<MainGame>{
 
   }
 
-  bool detectCollision(){return false;}
+  bool detectCollision(){
+    bool xCollision = dinoX < barrierX + barrierWidth && dinoX + dinoWidth > barrierX;
+    bool yCollision = dinoY < barrierY + barrierHeight && dinoY + dinoHeight > barrierY;
+
+    return xCollision && yCollision;
+  }
 
   void jump(){
     midJump = true;
@@ -104,7 +120,7 @@ class _MainGameState extends State<MainGame>{
   }
 
   void resetJump(){
-
+    midJump = false;
   }
 
   void playAgain(){
@@ -129,6 +145,7 @@ class _MainGameState extends State<MainGame>{
                 child:Center(
                   child: Stack(
                     children:[
+                      /*
                       TapToPlay(
                         gameHasStarted: gameStarted,
                       ),
@@ -141,7 +158,7 @@ class _MainGameState extends State<MainGame>{
                         score: score,
                         highScore: highScore,
                       ),
-
+*/
                       Dino(
                         dinoX: dinoX,
                         dinoY: dinoY - dinoHeight,
