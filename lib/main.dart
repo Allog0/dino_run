@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'MainGame.dart';
+import 'home.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +14,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MainGame(),
+      debugShowCheckedModeBanner: false,
+      title: 'dino_run',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Home(),
       
     );
   }
