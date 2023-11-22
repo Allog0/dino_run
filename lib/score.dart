@@ -9,7 +9,7 @@ class Score extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(15),
+      padding: const EdgeInsets.all(15),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -18,7 +18,7 @@ class Score extends StatelessWidget {
               Image.asset('lib/photos/nuticon.png', width: 60,),
               Text(
                 score.toString(),
-                style: TextStyle(color: Colors.green, fontSize: 30),
+                style: const TextStyle(color: Colors.green, fontSize: 30),
               ),
             ],
           ),
@@ -27,7 +27,7 @@ class Score extends StatelessWidget {
               Image.asset('lib/photos/nuticon.png', width: 45,),
               Text(
                 bestScore.toString(),
-                style: TextStyle(color: Colors.green, fontSize: 30),
+                style: const TextStyle(color: Colors.green, fontSize: 30),
               )
             ],
           )

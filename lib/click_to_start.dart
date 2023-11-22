@@ -12,12 +12,12 @@ class ClickToStart extends StatelessWidget {
         : Stack(
       children: [
         Container(
-          alignment: Alignment(0, 0),
+          alignment: const Alignment(0, 0),
           child: Image.asset('lib/photos/Miniatura.png'),
         ),
         Container(
-          alignment: Alignment(0, -0.7),
-          child: Text('Dino Game',
+          alignment: const Alignment(0, -0.7),
+          child: const Text('Dino Game',
           style: TextStyle(
             color: Colors.green,
             fontSize: 60,
