@@ -1,20 +1,29 @@
 import 'dart:async';
 
+import 'package:dino_run/MainMenu2.dart';
 import 'package:flutter/material.dart';
 
+import 'Dificultad.dart';
 import 'barricade.dart';
 import 'click_to_start.dart';
 import 'dino.dart';
 import 'game_has_over.dart';
 import 'score.dart';
 class Home extends StatefulWidget {
-  const Home({super.key});
+
+  double dificultad;
+
+  Home({
+    required this.dificultad,
+  });
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+
+  //int dificultad = 0;
   int score = 0;
   int bestScore = 0;
   bool gameHasStarted = false;
@@ -44,6 +53,7 @@ class _HomeState extends State<Home> {
 
     Timer.periodic(const Duration(milliseconds: 10), (timer)
     {
+      double dificultad = widget.dificultad;
       if(detectForCollision())
       {
         gameHasOver = true;
@@ -60,7 +70,7 @@ class _HomeState extends State<Home> {
       updateForScore();
 
       setState(() {
-        barricadeX -= 0.015;
+        barricadeX -= 0.015 + dificultad;
       });
     });
   }
