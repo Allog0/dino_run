@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:dino_run/database_helper.dart';
 import 'package:flutter/material.dart';
 
 import 'barricade.dart';
@@ -7,6 +8,8 @@ import 'click_to_start.dart';
 import 'dino.dart';
 import 'game_has_over.dart';
 import 'score.dart';
+import 'database_helper.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -37,17 +40,23 @@ class _HomeState extends State<Home> {
   double barricadeWidth = 0.2;
   double barricadeHeight = 0.4;
 
+  List<Map<String, dynamic>> bestScores = [];
+  bool showScores = false;
+  String name = '';
+
   void startGame(){
     setState(() {
       gameHasStarted = true;
+      name = 'prueba';
     });
 
     Timer.periodic(const Duration(milliseconds: 10), (timer)
-    {
+    async {
       if(detectForCollision())
       {
         gameHasOver = true;
         timer.cancel();
+        await addScore();
         setState(() {
           if(score > bestScore)
           {
@@ -137,71 +146,113 @@ class _HomeState extends State<Home> {
     });
   }
 
+  Future<void> addScore() async {
+    await DatabaseHelper.createItem(
+        name, score);
+    refreshBestScores();
+  }
+
+  void refreshBestScores() async {
+    final data = await DatabaseHelper.getItems();
+    setState(() {
+      bestScores = data;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: gameHasOver
-          ? (playGameAgain)
-          : (gameHasStarted ? (centralJump ? null : jumpDino) : startGame),
-      child: Scaffold(
-        backgroundColor: Colors.lightBlueAccent,
-        body: Column(
-          children: [
-            Expanded(
-                flex: 2,
-                child: Center(
-                  child: Stack(
-                    children: [
+    return Column(
+      children: [
+        Expanded(
+            child: GestureDetector(
+              onTap: gameHasOver
+                  ? (playGameAgain)
+                  : (gameHasStarted ? (centralJump ? null : jumpDino) : startGame),
+              child: Scaffold(
+                backgroundColor: Colors.lightBlueAccent,
+                body: Column(
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: Center(
+                        child: Stack(
+                          children: [
 
-                      ClickToStart(
-                        gameHasStarted: gameHasStarted,
-                      ),
+                            ClickToStart(
+                              gameHasStarted: gameHasStarted,
+                            ),
 
-                      Score(
-                        score: score,
-                        bestScore: bestScore,
-                      ),
+                            Score(
+                              score: score,
+                              bestScore: bestScore,
+                            ),
 
-                      Dino(
-                        dinoX: dinoX,
-                        dinoY: dinoY - dinoHeight,
-                        dinoWidth: dinoWidth,
-                        dinoHeight: dinoHeight,
-                      ),
+                            Dino(
+                              dinoX: dinoX,
+                              dinoY: dinoY - dinoHeight,
+                              dinoWidth: dinoWidth,
+                              dinoHeight: dinoHeight,
+                            ),
 
-                      Barricade(
-                        barricadeX: barricadeX,
-                        barricadeY: barricadeY - barricadeHeight,
-                        barricadeWidth: barricadeWidth,
-                        barricadeHeight: barricadeHeight,
-                      ),
+                            Barricade(
+                              barricadeX: barricadeX,
+                              barricadeY: barricadeY - barricadeHeight,
+                              barricadeWidth: barricadeWidth,
+                              barricadeHeight: barricadeHeight,
+                            ),
 
-                      GameHasOver(
-                        gameHasOver: gameHasOver,
-                      ),
+                            GameHasOver(
+                              gameHasOver: gameHasOver,
+                            ),
 
-                    ],
-                  ),
-                ),
-            ),
-            Expanded(
-                child: Container(
-                  color: Colors.grey[600],
-                  child: const Center(
-                    child: Text(
-                      'CODIGO',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
+                            BestScore(
+                              myData: bestScores,
+                              showScore: showScores,
+                            )
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                )
-            )
-          ],
+                    Expanded(
+                      child: Container(
+                        color: Colors.grey[600],
+                        child: const Center(
+                          child: Text(
+                            'CODIGO',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
         ),
-      ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      if(!showScores)
+                      {
+                        showScores = true;
+                      }else{
+                        showScores = false;
+                      }
+                    });
+                  },
+                  child: const Text('Mejores Puntuaciones'))
+            ],
+          ),
+        )
+      ]
     );
   }
 }
