@@ -18,7 +18,7 @@ class Score extends StatelessWidget {
               Image.asset('lib/photos/TrofeoNegro.png', width: 60,),
               Text(
                 score.toString(),
-                style: const TextStyle(color: Colors.green, fontSize: 30),
+                style: const TextStyle(color: Colors.white, fontSize: 30),
               ),
             ],
           ),
@@ -27,7 +27,7 @@ class Score extends StatelessWidget {
               Image.asset('lib/photos/Trofeo_Dorado.png', width: 60,),
               Text(
                 bestScore.toString(),
-                style: const TextStyle(color: Colors.green, fontSize: 30),
+                style: const TextStyle(color: Colors.white, fontSize: 30),
               )
             ],
           )

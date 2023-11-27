@@ -14,14 +14,32 @@ class GameHasOver extends StatelessWidget {
           alignment: const Alignment(0, -0.7),
           child: Text(
             'HAS PERDIDO',
-            style: TextStyle(color: Colors.grey[800], fontSize: 40),
+            style: TextStyle(
+                fontFamily: 'Manrope',
+                fontWeight: FontWeight.bold,
+                decoration: TextDecoration.none,
+                fontSize: 65,
+                foreground: Paint()
+                  ..style = PaintingStyle.stroke
+                  ..strokeWidth = 0.7
+                  ..color = Colors.red
+            ),
           ),
         ),
         Container(
           alignment: const Alignment(0, -0.1),
           child: Text(
             'Vuelve a dar clic para volver a jugar',
-              style: TextStyle(color: Colors.grey[800], fontSize: 30)
+            style: TextStyle(
+                fontFamily: 'Manrope',
+                fontWeight: FontWeight.bold,
+                decoration: TextDecoration.none,
+                fontSize: 45,
+                foreground: Paint()
+                  ..style = PaintingStyle.stroke
+                  ..strokeWidth = 0.7
+                  ..color = Colors.red
+            ),
           ),
         )
       ],

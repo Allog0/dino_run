@@ -227,7 +227,7 @@ class _HomeState extends State<Home> {
                     Expanded(
                       child: Container(
                         color: Colors.grey[600],
-                        child: const Center(
+                        /*child: const Center(
                           child: Text(
                             'CODIGO',
                             style: TextStyle(
@@ -236,7 +236,7 @@ class _HomeState extends State<Home> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ),
+                        ),*/
                       ),
                     )
                   ],

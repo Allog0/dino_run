@@ -22,7 +22,7 @@ class DatabaseHelper {
     if(kIsWeb){
       sql.databaseFactory = databaseFactoryFfiWeb;
     }else{
-      sql.databaseFactory = databaseFactoryFfi;
+      //sql.databaseFactory = databaseFactoryFfi;
     }
     final databasePath = await sql.getDatabasesPath();
     final path = join(databasePath, 'dino_run_db.db');

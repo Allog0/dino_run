@@ -13,19 +13,33 @@ class ClickToStart extends StatelessWidget {
       children: [
         Container(
           alignment: const Alignment(0, 0),
-          child: const Text(
+          child: Text(
             'Haz clic para empezar a jugar',
-            style: TextStyle(color: Colors.green, fontSize: 30, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontFamily: 'Manrope',
+                  fontWeight: FontWeight.bold,
+                  decoration: TextDecoration.none,
+                  fontSize: 45,
+                  foreground: Paint()
+                    ..style = PaintingStyle.stroke
+                    ..strokeWidth = 0.7
+                    ..color = Colors.white
+              ),
           ),
         ),
         Container(
           alignment: const Alignment(0, -0.7),
-          child: const Text('Dino Game',
-          style: TextStyle(
-            color: Colors.green,
-            fontSize: 60,
-            fontWeight: FontWeight.bold,
-          ),
+          child: Text('Dino Game',
+            style: TextStyle(
+                fontFamily: 'Manrope',
+                fontWeight: FontWeight.bold,
+                decoration: TextDecoration.none,
+                fontSize: 66,
+                foreground: Paint()
+                  ..style = PaintingStyle.stroke
+                  ..strokeWidth = 0.7
+                  ..color = Colors.white
+            ),
           ),
         ),
       ],
