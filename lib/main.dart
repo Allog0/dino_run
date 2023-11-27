@@ -1,7 +1,10 @@
+import 'package:dino_run/MainMenu2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'home.dart';
+import 'MainMenu2.dart';
+import 'palette.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Home(),
+      home: MainMenu2(),
       
     );
   }

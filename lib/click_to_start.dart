@@ -13,7 +13,10 @@ class ClickToStart extends StatelessWidget {
       children: [
         Container(
           alignment: const Alignment(0, 0),
-          child: Image.asset('lib/photos/Miniatura.png'),
+          child: const Text(
+            'Haz clic para empezar a jugar',
+            style: TextStyle(color: Colors.green, fontSize: 30, fontWeight: FontWeight.bold),
+          ),
         ),
         Container(
           alignment: const Alignment(0, -0.7),

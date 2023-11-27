@@ -19,7 +19,10 @@ class GameHasOver extends StatelessWidget {
         ),
         Container(
           alignment: const Alignment(0, -0.1),
-          child: Image.asset('lib/photos/Miniatura.png'),
+          child: Text(
+            'Vuelve a dar clic para volver a jugar',
+              style: TextStyle(color: Colors.grey[800], fontSize: 30)
+          ),
         )
       ],
     )
