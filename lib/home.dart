@@ -5,6 +5,7 @@ import 'package:dino_run/database_helper.dart';
 import 'package:dino_run/MainMenu2.dart';
 import 'package:flutter/material.dart';
 
+import 'BestScore.dart';
 import 'Dificultad.dart';
 import 'barricade.dart';
 import 'click_to_start.dart';
@@ -57,7 +58,7 @@ class _HomeState extends State<Home> {
   void startGame(){
     setState(() {
       gameHasStarted = true;
-      name = 'prueba';
+      name = 'Jugador 1';
     });
 
     Timer.periodic(const Duration(milliseconds: 10), (timer)
@@ -216,10 +217,6 @@ class _HomeState extends State<Home> {
                               gameHasOver: gameHasOver,
                             ),
 
-                            BestScore(
-                              myData: bestScores,
-                              showScore: showScores,
-                            )
                           ],
                         ),
                       ),
@@ -244,25 +241,6 @@ class _HomeState extends State<Home> {
               ),
             ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      if(!showScores)
-                      {
-                        showScores = true;
-                      }else{
-                        showScores = false;
-                      }
-                    });
-                  },
-                  child: const Text('Mejores Puntuaciones'))
-            ],
-          ),
-        )
       ]
     );
   }
