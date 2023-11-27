@@ -1,3 +1,4 @@
+import 'package:dino_run/MainMenu2.dart';
 import 'package:flutter/material.dart';
 class GameHasOver extends StatelessWidget {
 
@@ -41,7 +42,18 @@ class GameHasOver extends StatelessWidget {
                   ..color = Colors.red
             ),
           ),
-        )
+        ),
+        Container(
+          alignment: const Alignment(0, 0.5),
+          child:FilledButton(
+            onPressed: ()
+            {Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MainMenu2()),
+            );},
+            child: const Text('Main Menu'),
+          ),
+        ),
       ],
     )
         : Container();
