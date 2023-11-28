@@ -19,7 +19,7 @@ class GameHasOver extends StatelessWidget {
                 fontFamily: 'Manrope',
                 fontWeight: FontWeight.bold,
                 decoration: TextDecoration.none,
-                fontSize: 65,
+                fontSize: 50,
                 foreground: Paint()
                   ..style = PaintingStyle.stroke
                   ..strokeWidth = 0.7
@@ -35,7 +35,7 @@ class GameHasOver extends StatelessWidget {
                 fontFamily: 'Manrope',
                 fontWeight: FontWeight.bold,
                 decoration: TextDecoration.none,
-                fontSize: 45,
+                fontSize: 25,
                 foreground: Paint()
                   ..style = PaintingStyle.stroke
                   ..strokeWidth = 0.7

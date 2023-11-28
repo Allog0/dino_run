@@ -19,7 +19,7 @@ class ClickToStart extends StatelessWidget {
                   fontFamily: 'Manrope',
                   fontWeight: FontWeight.bold,
                   decoration: TextDecoration.none,
-                  fontSize: 45,
+                  fontSize: 35,
                   foreground: Paint()
                     ..style = PaintingStyle.stroke
                     ..strokeWidth = 0.7
@@ -34,7 +34,7 @@ class ClickToStart extends StatelessWidget {
                 fontFamily: 'Manrope',
                 fontWeight: FontWeight.bold,
                 decoration: TextDecoration.none,
-                fontSize: 66,
+                fontSize: 55,
                 foreground: Paint()
                   ..style = PaintingStyle.stroke
                   ..strokeWidth = 0.7
